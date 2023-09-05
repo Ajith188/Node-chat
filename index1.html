@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node-ItStall-Chat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: lightblue; /* Change background color to light blue */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #dad5d9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#messages {
+    list-style-type: none;
+    /* font-style: italic;l */
+    font-weight: italic; /* Make system messages bold */
+    padding: 5px 10px;
+    /* padding: 0; */
+}
+
+#messages li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #12bd40;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+h1 {
+    font-weight: bold; /* Make text bold */
+    color: rgb(93, 10, 137); /* Change text color to green */
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>IT-Stall-Chat</h1>
+    <ul id="messages"></ul>
+    <form id="message-form">
+        <input id="m" autocomplete="off" placeholder="Type your message..." />
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('connect', function () {
+        socket.emit('joined', 'Welcome to Node Chat');
+    });
+    // socket.on('acknowledge', function (data) {
+    //     alert(data);
+    // });
+    $('#message-form').submit(function (e) {
+        e.preventDefault();
+        socket.emit('chat message', $('#m').val());
+        $('#messages').append($('<li>').text($('#m').val()));
+        $('#m').val('');
+    });
+    socket.on('response message', function (data) {
+        $('#messages').append($('<li>').text(data));
+    });
+</script>
+</body>
+</html>

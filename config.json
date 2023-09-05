@@ -1,0 +1,5 @@
+{
+    "PORT":"54321",
+    "URL":"mongodb://localhost:27017/chat-node",
+    "Jwt_Secret_Key":"Ajith!**@"
+}
