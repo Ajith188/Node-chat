@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hello world</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js" >      
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js">
+    // this is used for multiple server used socket </script> 
+</head>
+<body>
+    <!-- <p>Chat-Node</p> -->
+    <button> Trigger 8000 Port</button>
+   <button> Trigger 8003 Port socket</button>
+   <script>
+        var socket = io();
+    //    1. // socket.on('message',function(data){
+        //     document.write(data)
+        // }) //////////*        this for basic setup               *********////////                          
+        
+    //    2. socket.on('myCustomEvent',function(data){
+    //         document.write(data.descrpition) ///////this use emit file used serverSide used key excuted for clientside
+    //     })
+
+    // socket.emit('myCustomerEventClientSide','A message from client Side') ////this is write for client side excuted for server side only key
+
+    // var socket= io();
+    // 3.socket.on('broadcast',function(data){
+    //     document.body.innerHTML=''
+    //     document.write(data.message)
+    // })
+
+    // 4. socket.on('NewUserConnected',function(data){
+    //     document.body.innerHTML=''
+    //     document.write(data.message)
+    // })
+
+
+    // 5.socket.on('TestEvent',function(data){ //////*********Room created
+    //     document.body.innerHTML=''
+    //     document.write(data)
+    // }) //////////////************ Room created ******/
+
+
+
+///////////**************NAmescape created ***********////////////
+    // var socket = io('/custom-namespace');
+
+    // socket.on('customerEvent',function(data){
+    //     document.body.innerHTML=''
+    //     document.write(data)
+    // })
+///////////**************NAmescape created ***********////////////
+
+
+
+
+////////////////********room created********///////
+// var socket = io();
+
+// socket.on('ConnectionRoom',function(data){
+//     document.body.innerHTML=''
+//     document.write(data)
+// })
+////////////////********room created********///////
+
+
+
+
+/////////////////**********Error- handling***************////////////////
+
+
+// var socket = io();
+
+// socket.on('connect_failed or reconnecting or error',function(){
+//   alert('sorry, your connection failed')
+// })
+
+/////////////////**********Error- handling***************////////////////
+
+
+//////////*******Multiple server to connect to socket **********///////////////
+
+$(document).ready(function(){
+    
+})
+
+
+    </script> 
+</body>
+</html>
